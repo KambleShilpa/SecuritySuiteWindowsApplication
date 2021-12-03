@@ -1,0 +1,162 @@
+﻿<Page x:Class="SecuritySuite.Decryption"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SecuritySuite"
+      mc:Ignorable="d" 
+      d:DesignHeight="460" d:DesignWidth="720"
+      Title="Decryption" Background="#181735">
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <!--<ThicknessAnimation Duration="0:0:.85" Storyboard.TargetProperty="Margin" From="900,0,-900,0" To="0" DecelerationRatio=".9" />-->
+                        <ThicknessAnimation Duration="0:0:.95" Storyboard.TargetProperty="Margin" From="-100,0,100,0" To="0" DecelerationRatio=".9" />
+                        <DoubleAnimation Duration="0:0:.75" Storyboard.TargetProperty="Opacity" From="0" To="1" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Page.Triggers>
+
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel VerticalAlignment="Top"
+                    Margin="60,20,0,0">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <TextBlock Text="Decryption"
+                               Foreground="White"
+                               FontWeight="Medium"
+                               FontSize="20"
+                               VerticalAlignment="Center"
+                                   Margin="10,0,0,0"/>
+                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="140*"/>
+                        <ColumnDefinition Width="140*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="140*"/>
+                        <ColumnDefinition Width="140*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="140*"/>
+                        <ColumnDefinition Width="140*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0"
+                       Grid.ColumnSpan="2" Text="File Upload:" 
+                       Style="{StaticResource flatTextBlock}"/>
+                    <TextBox Name="FileToDecryptTB"
+                        Grid.Row="0" Grid.Column="3"
+                        Grid.ColumnSpan="2"
+                        MaxLength="50"  
+                        IsReadOnly="False"
+                             Margin="0,10,0,10"/>
+                    <Button Content="Browse"
+                            Grid.Row="0" Grid.Column="6"
+                            Grid.ColumnSpan="2"
+                            Click="browseButton_Click"
+                            Style="{StaticResource pinkButton}"
+                            Height="38" Margin="0.333,0,0,0"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="109"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0"
+                       Grid.ColumnSpan="2" Text="Enter Secret Key" 
+                       Style="{StaticResource flatTextBlock}"/>
+                    <TextBox Name="DecryptionKeyTextbox"
+                        Grid.Row="1" Grid.Column="3"
+                        Grid.ColumnSpan="2"
+                        MaxLength="32"  
+                        IsReadOnly="False"
+                             Margin="0,10,0,10"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0"
+                       Grid.ColumnSpan="2" Text="Decryption Method:" 
+                       Foreground="White"
+                       FontSize="14"
+                       FontWeight="Medium"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                               Margin="0,10,0,10"/>
+                    <ComboBox x:Name = "methodComboBox"
+                              Grid.Row = "1" Grid.Column="2" 
+                              Margin = "0,38.333,0.333,0"
+                              Height="20" SelectionChanged="methodcomboBox_SelectionChanged"
+                              Grid.ColumnSpan="4" Grid.RowSpan="2">
+                        <ComboBoxItem Content = "AES"/>
+                        <ComboBoxItem Content = "3DES" />
+                    </ComboBox>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="20,10,0,0">
+                <Button Content="Decrypt"
+                        Style="{StaticResource pinkButton}"
+                        Margin="100,0,10,0"
+                        Click="DecryptButton_Click">
+                </Button>
+                <Button Content="Reset"
+                        Click="resetButton_Click"
+                        Style="{StaticResource greyButton}"
+                        Margin='20,0,0,0'>
+                </Button>
+            </StackPanel>
+
+            <Border Width="1000"
+                            Height="2"
+                            Background="#FC6586"
+                            Margin="0,15,0,0"
+                            CornerRadius="20"/>
+            <StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Decrypted Data" Margin="10,10,0,0"
+                           HorizontalAlignment="Left"
+                           FontSize="20"
+                       Style="{StaticResource flatTextBlock}"/>
+                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="80*"/>
+                        <ColumnDefinition Width="140*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="140*"/>
+                        <ColumnDefinition Width="140*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="140*"/>
+                        <ColumnDefinition Width="140*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="DecryptedDataTB" Grid.RowSpan="3" Grid.ColumnSpan="6"
+                             Margin="42,10,4.333,50.667"
+                         Style="{StaticResource flatscrollableTextBox}"
+                         Height="150" Text="YOUR DECRYPTED DATA.."/>
+                    <Button Content="Save File"
+                        Style="{StaticResource pinkButton}"
+                        Margin="109.667,0,0,0" Grid.Column="5" Grid.Row="0"
+                            Grid.ColumnSpan="3"
+                        Click="savefileButton_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                Saves your Encrypted Data in a file
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Content="Reset" Grid.Column="5" Grid.Row="1" Click="dataResetButton_Click"
+                        Style="{StaticResource greyButton}" Grid.ColumnSpan="3" Margin="109.667,0.333,0,0.333"/>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

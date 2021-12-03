@@ -1,0 +1,208 @@
+﻿<Window x:Class="SecuritySuite.Registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecuritySuite"
+        mc:Ignorable="d"
+        Title="Registration" Height="514.5" Width="800.328" BorderBrush="Black" Foreground="#FFFBFBFB"
+        Background="#181735" AllowsTransparency="True" WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <!--<ThicknessAnimation Duration="0:0:.85" Storyboard.TargetProperty="Margin" From="900,0,-900,0" To="0" DecelerationRatio=".9" />-->
+                        <ThicknessAnimation Duration="0:0:.95" Storyboard.TargetProperty="Margin" From="-100,0,100,0" To="0" DecelerationRatio=".9" />
+                        <DoubleAnimation Duration="0:0:.75" Storyboard.TargetProperty="Opacity" From="0" To="1" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Background="#0F0F2D" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="SecuritySuite" 
+                       Foreground="White"
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Right"
+                       FontFamily="Fonts/#Dosis"
+                       FontWeight="Medium" Margin="0,0,32.333,5.333"
+                       Grid.ColumnSpan="3" Height="15" Width="89"/>
+
+
+                <TextBlock Text="Login" 
+                       Foreground="White"
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Right"
+                       FontFamily="Fonts/#Dosis"
+                           MouseDown="loginTextBlock_MouseDown"
+                       FontWeight="Medium" Margin="0,0,53,5.333"
+                       Grid.ColumnSpan="3" Height="15" Width="89" Grid.Column="2"/>
+
+
+                <Button Content="Close"
+                        Foreground="White"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                        Margin="0,0,10,0"
+                        Grid.Column="12"
+                        Grid.ColumnSpan="2"
+                        Click="closeButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#FE6584"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C60"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="75" Height="15"
+                                    CornerRadius="8"
+                                    Background="{TemplateBinding Background}">
+
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid>
+            <StackPanel VerticalAlignment="Center"
+                    Margin="60">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                        <TextBlock Text="Register:"
+                           Style="{StaticResource flatTextBlock}"
+                           FontSize="20"
+                               Margin="40,0,0,0"/>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="83*"/>
+                            <ColumnDefinition Width="82*"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="83*"/>
+                            <ColumnDefinition Width="82*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0"
+                       Grid.ColumnSpan="2" Text="Name:" 
+                       Style="{StaticResource flatTextBlock}"/>
+                        <TextBox Name="UserNameTB"
+                        Grid.Row="0" Grid.Column="3"
+                        Grid.ColumnSpan="2"
+                        MaxLength="50"  
+                        IsReadOnly="False"
+                             Margin="0,10,0,10"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0"
+                       Grid.ColumnSpan="2" Text="User ID:" 
+                       Style="{StaticResource flatTextBlock}"/>
+                        <TextBox Name="UserIDTB"
+                        Grid.Row="1" Grid.Column="3"
+                        Grid.ColumnSpan="2"
+                        MaxLength="50"  
+                        IsReadOnly="False"
+                             Margin="0,10,0,10"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0"
+                       Grid.ColumnSpan="2" Text="Email ID:" 
+                       Style="{StaticResource flatTextBlock}"/>
+                        <TextBox Name="EmailTB"
+                        Grid.Row="2" Grid.Column="3"
+                        Grid.ColumnSpan="2"
+                        MaxLength="50"  
+                        IsReadOnly="False"
+                            Margin="0,10,0,10" />
+
+                        <TextBlock Grid.Row="3" Grid.Column="0"
+                       Grid.ColumnSpan="2" Text="Password:" 
+                       Style="{StaticResource flatTextBlock}"/>
+                        <PasswordBox Name="PasswordTB"
+                        Grid.Row="3" Grid.Column="3"
+                        Grid.ColumnSpan="2"
+                        MaxLength="50"  
+                             Margin="0,10,0,10"/>
+
+                        <TextBlock Grid.Row="4" Grid.Column="0"
+                       Grid.ColumnSpan="2" Text="Confirm Password:" 
+                       Style="{StaticResource flatTextBlock}"/>
+                        <PasswordBox Name="ConfPasswordTB"
+                        Grid.Row="4" Grid.Column="3"
+                        Grid.ColumnSpan="2"
+                        MaxLength="50"  
+                             Margin="0,10,0,10"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="100,15,0,0">
+                    <Button Content="Register"
+                        Click="submitButton_Click"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Margin="38,0,10,0" Style="{StaticResource pinkButton}">
+                    </Button>
+                    <Button Content="Reset" Click="resetButton_Click"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium" Margin='90,0,0,0'
+                        Style="{StaticResource greyButton}">
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Height="20" HorizontalAlignment="Left"
+                   Margin="413,418,0,0" x:Name ="errormessage"
+                   VerticalAlignment="Top" Width="297"  OpacityMask="Crimson"
+                               Foreground="Red"  />
+        </Grid>
+    </Grid>
+</Window>

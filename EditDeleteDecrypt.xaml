@@ -1,0 +1,26 @@
+﻿<Page x:Class="SecuritySuite.EditDeleteDecrypt"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SecuritySuite"
+      mc:Ignorable="d" 
+      d:DesignHeight="61" d:DesignWidth="720"
+      Title="EditDeleteDecrypt" Background="#181735">
+
+    <Grid>
+        <Button Content="Edit"
+                            Grid.Row="0"
+                            Click="editButton_Click"
+                            Style="{StaticResource greyButton}"
+                            Height="38" Margin="411,0,0,10.333"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="109" RenderTransformOrigin="0.037,0.531"/>
+        <Button Content="Delete"
+                            Grid.Row="0"
+                            Click="deleteButton_Click_1"
+                            Style="{StaticResource greyButton}"
+                            Height="38" Margin="552,0,0,10.333"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="109" RenderTransformOrigin="-0.163,0.593"/>
+
+    </Grid>
+</Page>

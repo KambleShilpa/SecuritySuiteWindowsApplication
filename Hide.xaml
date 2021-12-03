@@ -1,0 +1,77 @@
+﻿<Page x:Class="SecuritySuite.Hide"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SecuritySuite"
+      mc:Ignorable="d" 
+      d:DesignHeight="460" d:DesignWidth="720"
+      Title="Hide" Background="#181735">
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <!--<ThicknessAnimation Duration="0:0:.85" Storyboard.TargetProperty="Margin" From="900,0,-900,0" To="0" DecelerationRatio=".9" />-->
+                        <ThicknessAnimation Duration="0:0:.95" Storyboard.TargetProperty="Margin" From="-100,0,100,0" To="0" DecelerationRatio=".9" />
+                        <DoubleAnimation Duration="0:0:.75" Storyboard.TargetProperty="Opacity" From="0" To="1" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Page.Triggers>
+
+    <Grid>
+        <TextBlock Text="HIDE" Foreground="White" FontSize="20" Margin="40,41,605,387" RenderTransformOrigin="-0.138,0.609"></TextBlock>
+        <Grid Height="70" Margin="40,63,36,327">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240*"/>
+                <ColumnDefinition Width="192*"/>
+                <ColumnDefinition Width="49*"/>
+                <ColumnDefinition Width="240*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="HIDE FILE" Grid.Column="0"
+                    ToolTip="Select a file to hide"
+                        Foreground="White"
+                        FontSize="14" Click="HideFileButton_Click"
+                        FontWeight="Medium" Style="{StaticResource pinkButton}">
+            </Button>
+            <Button Content="HIDE FOLDER"
+                    ToolTip="Select a folder to hide"
+                    Grid.Column="1" Click="HideFolderButton_Click"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Style="{StaticResource greyButton}" Grid.ColumnSpan="2">
+            </Button>
+            <Button Content="HIDE DRIVE"
+                    ToolTip="Select a drive to hide"
+                    Grid.Column="3" 
+                        Foreground="White"
+                    Click="HideDriveButton_Click"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Style="{StaticResource greyButton}">
+            </Button>
+        </Grid>
+
+        <DataGrid AutoGenerateColumns="False" Height="150" HorizontalAlignment="Left"
+                  Margin="36,170,0,0" x:Name="hideGrid" VerticalAlignment="Top" Width="650"
+                  Background="Lavender" ToolTip="List of Items Hidden"
+                  RowBackground="Lavender" IsEnabled="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="File Path" Width="230" Binding="{Binding PATH}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Modified At" Width="200" Binding="{Binding DATE_TIME}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Type" Width="200" Binding="{Binding FILE_TYPE}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Frame x:Name="HideDriveFrame"
+                   NavigationUIVisibility="Hidden" Height="80" VerticalAlignment="Top"
+                   Margin="36,350,36,0" Content="" Foreground="White">
+        </Frame>
+    </Grid>
+</Page>
